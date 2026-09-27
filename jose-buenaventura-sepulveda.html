@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>José Buenaventura Sepúlveda | Museo Digital</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Georgia, "Times New Roman", serif;
+            background: #f4f1e8;
+            color: #183b5b;
+            line-height: 1.7;
+        }
+
+        /* ENCABEZADO */
+
+        header {
+            background: linear-gradient(135deg, #0b416b, #123252);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+            border-bottom: 5px solid #c9a227;
+        }
+
+        header h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        /* CONTENEDOR */
+
+        main {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        section {
+            background: white;
+            margin-bottom: 35px;
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.10);
+        }
+
+        h2 {
+            color: #0b416b;
+            font-size: 28px;
+            margin-bottom: 20px;
+            border-left: 5px solid #c9a227;
+            padding-left: 12px;
+        }
+
+        /* PERSONAJE */
+
+        .personaje {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .personaje img {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        .personaje h3 {
+            font-size: 30px;
+            margin-bottom: 15px;
+            color: #123252;
+        }
+
+        /* HISTORIA MILITAR */
+
+        .militar {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .militar img {
+            width: 100%;
+            border-radius: 15px;
+        }
+
+        /* MAPA */
+
+        .mapa {
+            text-align: center;
+        }
+
+        .mapa img {
+            width: 100%;
+            max-width: 800px;
+            border-radius: 15px;
+            margin-top: 15px;
+        }
+
+        /* GALERÍA */
+
+        .galeria {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .galeria img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .galeria img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+        }
+
+        /* SABÍAS QUE */
+
+        .sabias {
+            background: #eaf2f8;
+            border-left: 6px solid #c9a227;
+        }
+
+        .sabias button {
+            margin-top: 15px;
+            padding: 12px 22px;
+            border: none;
+            border-radius: 25px;
+            background: #0b416b;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .sabias button:hover {
+            background: #123252;
+        }
+
+        #dato {
+            display: none;
+            margin-top: 18px;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+        }
+
+        /* VOLVER */
+
+        .volver {
+            text-align: center;
+            margin: 45px 0;
+        }
+
+        .volver a {
+            display: inline-block;
+            background: #0b416b;
+            color: white;
+            text-decoration: none;
+            padding: 14px 28px;
+            border-radius: 30px;
+            font-size: 17px;
+            transition: 0.3s;
+        }
+
+        .volver a:hover {
+            background: #c9a227;
+            color: #123252;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 750px) {
+
+            header h1 {
+                font-size: 30px;
+            }
+
+            .personaje,
+            .militar {
+                grid-template-columns: 1fr;
+            }
+
+            .galeria {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ENCABEZADO -->
+
+    <header>
+        <h1>José Buenaventura Sepúlveda Fernández</h1>
+        <p>Personaje histórico e identidad de nuestra institución</p>
+    </header>
+
+
+    <main>
+
+        <!-- PERSONAJE -->
+
+        <section>
+            <h2>👤 El personaje</h2>
+
+            <div class="personaje">
+
+                <img src="imagenes/jose-sepulveda.jpg"
+                     alt="José Buenaventura Sepúlveda">
+
+                <div>
+                    <h3>José Buenaventura Sepúlveda Fernández</h3>
+
+                    <p>
+                        Su nombre forma parte de la historia e identidad
+                        de nuestra institución educativa y de la memoria
+                        histórica de Cañete.
+                    </p>
+
+                    <p>
+                        Fue un militar peruano vinculado a la historia
+                        de la Guerra del Pacífico.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- QUIÉN FUE -->
+
+        <section>
+
+            <h2>📖 ¿Quién fue?</h2>
+
+            <p>
+                José Buenaventura Sepúlveda Fernández nació en Cañete
+                y tuvo una trayectoria vinculada a la vida militar
+                del Perú durante el siglo XIX.
+            </p>
+
+            <p>
+                Su nombre quedó relacionado con la historia de Cañete
+                y posteriormente fue adoptado por la institución
+                educativa que comenzó sus actividades en 1937.
+            </p>
+
+        </section>
+
+
+        <!-- HISTORIA MILITAR -->
+
+        <section>
+
+            <h2>⚔️ Su historia militar</h2>
+
+            <div class="militar">
+
+                <div>
+                    <p>
+                        José Buenaventura Sepúlveda participó en el
+                        contexto de la Guerra del Pacífico.
+                    </p>
+
+                    <p>
+                        Durante este periodo formó parte de las
+                        acciones militares desarrolladas por el
+                        ejército peruano.
+                    </p>
+
+                    <p>
+                        Falleció el 6 de noviembre de 1879 durante
+                        la batalla de Germania.
+                    </p>
+                </div>
+
+                <img src="imagenes/guerra-pacifico.jpg"
+                     alt="Imagen histórica relacionada con la Guerra del Pacífico">
+
+            </div>
+
+        </section>
+
+
+        <!-- MAPA -->
+
+        <section class="mapa">
+
+            <h2>🗺️ Mapa histórico</h2>
+
+            <p>
+                Ubica los lugares relacionados con la historia de
+                José Buenaventura Sepúlveda y el contexto histórico
+                en el que vivió.
+            </p>
+
+            <img src="imagenes/mapa-historico.jpg"
+                 alt="Mapa histórico">
+
+        </section>
+
+
+        <!-- POR QUÉ EL COLEGIO LLEVA SU NOMBRE -->
+
+        <section>
+
+            <h2>🏫 ¿Por qué el colegio lleva su nombre?</h2>
+
+            <p>
+                El 1 de abril de 1937 inició sus actividades el
+                colegio particular mixto denominado
+                <strong>Teniente Coronel José Buenaventura
+                Sepúlveda Fernández</strong>.
+            </p>
+
+            <p>
+                La elección de este nombre vinculó desde sus
+                comienzos a la institución con la memoria histórica
+                de Cañete y con la figura de José Buenaventura
+                Sepúlveda.
+            </p>
+
+            <p>
+                Con el paso de las generaciones, su nombre se
+                convirtió en parte de la identidad de la comunidad
+                educativa sepulvedana.
+            </p>
+
+        </section>
+
+
+        <!-- GALERÍA -->
+
+        <section>
+
+            <h2>🖼️ Galería histórica</h2>
+
+            <p>
+                Explora algunas imágenes relacionadas con el
+                personaje, la época y la historia de nuestra
+                institución.
+            </p>
+
+            <br>
+
+            <div class="galeria">
+
+                <img src="imagenes/galeria1.jpg"
+                     alt="Fotografía histórica">
+
+                <img src="imagenes/galeria2.jpg"
+                     alt="Documento histórico">
+
+                <img src="imagenes/galeria3.jpg"
+                     alt="Historia del colegio">
+
+                <img src="imagenes/galeria4.jpg"
+                     alt="Fotografía antigua">
+
+                <img src="imagenes/galeria5.jpg"
+                     alt="Memoria histórica">
+
+                <img src="imagenes/galeria6.jpg"
+                     alt="Colegio José Buenaventura Sepúlveda">
+
+            </div>
+
+        </section>
+
+
+        <!-- SABÍAS QUE -->
+
+        <section class="sabias">
+
+            <h2>💡 ¿Sabías que...?</h2>
+
+            <p>
+                El colegio no comenzó como una institución pública.
+                Sus actividades iniciaron en 1937 como un colegio
+                particular mixto.
+            </p>
+
+            <button onclick="mostrarDato()">
+                Descubrir otro dato
+            </button>
+
+            <div id="dato">
+                En 1939 la institución recibió reconocimiento oficial
+                mediante la Resolución Ministerial N.º 2430.
+            </div>
+
+        </section>
+
+
+        <!-- VOLVER -->
+
+        <div class="volver">
+
+            <a href="index.html">
+                ← Volver al Museo Digital
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <script>
+
+        function mostrarDato() {
+
+            const dato = document.getElementById("dato");
+
+            if (dato.style.display === "block") {
+                dato.style.display = "none";
+            } else {
+                dato.style.display = "block";
+            }
+
+        }
+
+    </script>
+
+</body>
+</html>

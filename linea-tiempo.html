@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Línea de Tiempo | Memorias Sepulvedanas</title>
+
+    <style>
+    * {
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        background: #f4f5f7;
+        color: #123f68;
+    }
+
+    header {
+        background: #063b68;
+        color: white;
+        text-align: center;
+        padding: 40px 20px;
+        border-bottom: 5px solid #d6a928;
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 42px;
+    }
+
+    header p {
+        margin-top: 10px;
+        font-size: 18px;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 45px auto;
+        padding: 0 25px;
+    }
+
+    .back {
+        display: inline-block;
+        margin-bottom: 45px;
+        padding: 12px 22px;
+        background: #0b4778;
+        color: white;
+        text-decoration: none;
+        border-radius: 25px;
+        transition: 0.3s;
+    }
+
+    .back:hover {
+        background: #082f50;
+        transform: translateY(-2px);
+    }
+
+    /* CONTENEDOR DE LA LÍNEA */
+
+    .timeline {
+        position: relative;
+    }
+
+    /* Línea vertical central */
+
+    .timeline::before {
+        content: "";
+        position: absolute;
+        left: 34%;
+        top: 0;
+        bottom: 0;
+        width: 5px;
+        background: #d6a928;
+        transform: translateX(-50%);
+    }
+
+    /* CADA ACONTECIMIENTO */
+
+    .event {
+        display: grid;
+        grid-template-columns: 30% 8% 62%;
+        position: relative;
+        margin-bottom: 75px;
+        align-items: start;
+    }
+
+    /* ZONA DE IMÁGENES */
+
+    .event-images {
+        padding-right: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .event-images img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        border-radius: 12px;
+        border: 4px solid white;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        transition: transform 0.3s ease;
+    }
+
+    .event-images img:hover {
+        transform: scale(1.03);
+    }
+
+    /* CÍRCULO SOBRE LA LÍNEA */
+
+    .event-dot {
+        width: 25px;
+        height: 25px;
+        background: white;
+        border: 5px solid #d6a928;
+        border-radius: 50%;
+        justify-self: center;
+        position: relative;
+        z-index: 3;
+        margin-top: 10px;
+    }
+
+    /* INFORMACIÓN */
+
+    .event-content {
+        padding-left: 20px;
+    }
+
+    .year {
+        display: inline-block;
+        background: #0b4778;
+        color: white;
+        padding: 10px 25px;
+        border-radius: 30px;
+        font-weight: bold;
+        font-size: 21px;
+        margin-bottom: 12px;
+    }
+
+    .event-content h2 {
+        margin: 5px 0 15px;
+        color: #083d69;
+        font-size: 30px;
+    }
+
+    .event-summary {
+        background: white;
+        padding: 22px;
+        border-radius: 12px;
+        line-height: 1.7;
+        box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+        font-size: 17px;
+    }
+
+    /* CONTENIDO OCULTO */
+
+    .more-content {
+        display: none;
+        background: #eef3f7;
+        margin-top: 12px;
+        padding: 22px;
+        border-left: 4px solid #d6a928;
+        border-radius: 8px;
+        line-height: 1.8;
+        animation: aparecer 0.4s ease;
+    }
+
+    .more-content.show {
+        display: block;
+    }
+
+    @keyframes aparecer {
+        from {
+            opacity: 0;
+            transform: translateY(-8px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* BOTÓN VER MÁS */
+
+    .more-btn {
+        margin-top: 15px;
+        padding: 10px 20px;
+        border: none;
+        background: #0b4778;
+        color: white;
+        border-radius: 22px;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 15px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .more-btn:hover {
+        background: #082f50;
+        transform: translateY(-2px);
+    }
+
+    /* DESTACADO FINAL */
+
+    .final-message {
+        background: #063b68;
+        color: white;
+        padding: 35px;
+        border-radius: 15px;
+        text-align: center;
+        margin-top: 30px;
+        border-top: 5px solid #d6a928;
+    }
+
+    .final-message h2 {
+        margin-top: 0;
+        color: white;
+    }
+
+    /* CELULAR */
+
+    @media (max-width: 800px) {
+
+        .timeline::before {
+            left: 20px;
+        }
+
+        .event {
+            grid-template-columns: 40px 1fr;
+            margin-bottom: 55px;
+        }
+
+        .event-images {
+            grid-column: 2;
+            grid-row: 1;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+
+        .event-images img {
+            height: 170px;
+        }
+
+        .event-dot {
+            grid-column: 1;
+            grid-row: 1;
+            margin-top: 10px;
+        }
+
+        .event-content {
+            grid-column: 2;
+            padding-left: 0;
+        }
+
+        .event-content h2 {
+            font-size: 25px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>◷ Línea de Tiempo</h1>
+    <p>Memorias Sepulvedanas</p>
+</header>
+
+<main class="container">
+
+    <a class="back" href="index.html">
+        ← Volver al museo
+    </a>
+
+    <div class="timeline">
+
+        <!-- ========================= -->
+        <!-- 1937 -->
+        <!-- ========================= -->
+
+        <div class="event">
+
+            <div class="event-images">
+
+                <img src="imagenes/1937-1.jpg"
+                     alt="Primeros años del colegio Sepúlveda">
+
+                <img src="imagenes/1937-2.jpg"
+                     alt="Historia del colegio Sepúlveda">
+
+            </div>
+
+            <div class="event-dot"></div>
+
+            <div class="event-content">
+
+                <span class="year">1937</span>
+
+                <h2>Los orígenes del colegio</h2>
+
+                <div class="event-summary">
+
+                    El 1 de abril de 1937 comenzó a funcionar el
+                    colegio particular mixto Teniente Coronel
+                    José Buenaventura Sepúlveda Fernández.
+
+                    <button class="more-btn"
+                            onclick="mostrarMas(this)">
+                        Ver más
+                    </button>
+
+                    <div class="more-content">
+
+                        <p>
+                            La creación de la institución fue impulsada
+                            por ciudadanos de Cañete interesados en
+                            ampliar las oportunidades de educación
+                            secundaria en la provincia.
+                        </p>
+
+                        <p>
+                            Entre los principales promotores aparece
+                            el abogado <strong>Dr. Francisco Javier
+                            Hurtado Laos</strong>, acompañado por
+                            el sacerdote <strong>Pedro Hurtado Mora</strong>
+                            y otros miembros de la familia Hurtado Laos.
+                        </p>
+
+                        <p>
+                            El colegio comenzó sus actividades en un
+                            modesto local ubicado en la esquina de las
+                            calles <strong>Sepúlveda y Alfonso Ugarte</strong>,
+                            en San Vicente de Cañete.
+                        </p>
+
+                        <p>
+                            En sus primeros años contó con las secciones
+                            <strong>Común y Comercial</strong>, a las que
+                            posteriormente se agregó la enseñanza primaria.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- 1939 -->
+        <!-- ========================= -->
+
+        <div class="event">
+
+            <div class="event-images">
+
+                <img src="imagenes/1939-1.jpg"
+                     alt="Historia del colegio en 1939">
+
+                <img src="imagenes/1939-2.jpg"
+                     alt="Documentos históricos del colegio">
+
+            </div>
+
+            <div class="event-dot"></div>
+
+            <div class="event-content">
+
+                <span class="year">1939</span>
+
+                <h2>Reconocimiento oficial</h2>
+
+                <div class="event-summary">
+
+                    La institución obtuvo reconocimiento oficial
+                    mediante la Resolución Ministerial N.º 2430.
+
+                    <button class="more-btn"
+                            onclick="mostrarMas(this)">
+                        Ver más
+                    </button>
+
+                    <div class="more-content">
+
+                        <p>
+                            El <strong>10 de marzo de 1939</strong>,
+                            la institución recibió reconocimiento oficial
+                            mediante la <strong>Resolución Ministerial
+                            N.º 2430</strong>.
+                        </p>
+
+                        <p>
+                            La reseña histórica señala que en ese momento
+                            el colegio contaba aproximadamente con
+                            <strong>40 alumnos</strong>.
+                        </p>
+
+                        <p>
+                            Este reconocimiento permitió consolidar
+                            oficialmente la presencia de la institución
+                            educativa dentro del sistema educativo de
+                            aquellos años.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- 1945-1946 -->
+        <!-- ========================= -->
+
+        <div class="event">
+
+            <div class="event-images">
+
+                <img src="imagenes/1945-1.jpg"
+                     alt="Historia de la municipalización">
+
+                <img src="imagenes/1946-1.jpg"
+                     alt="Colegio Sepúlveda durante sus primeros años">
+
+            </div>
+
+            <div class="event-dot"></div>
+
+            <div class="event-content">
+
+                <span class="year">1945–1946</span>
+
+                <h2>El proceso de municipalización</h2>
+
+                <div class="event-summary">
+
+                    El colegio atravesó dificultades económicas
+                    y comenzó un proceso de municipalización.
+
+                    <button class="more-btn"
+                            onclick="mostrarMas(this)">
+                        Ver más
+                    </button>
+
+                    <div class="more-content">
+
+                        <p>
+                            Durante sus primeros años, el colegio dependía
+                            principalmente de las pensiones pagadas por
+                            los estudiantes, situación que generó
+                            dificultades para mantener su funcionamiento.
+                        </p>
+
+                        <p>
+                            En <strong>1945</strong>, en el contexto de
+                            las políticas de gratuidad de la enseñanza,
+                            se impulsó la municipalización del colegio.
+                        </p>
+
+                        <p>
+                            En <strong>1946</strong>, la municipalidad
+                            destinó recursos para contribuir al
+                            sostenimiento de la institución.
+                        </p>
+
+                        <p>
+                            Según la reseña histórica, este proceso
+                            permitió que se pudiera impartir enseñanza
+                            gratuita a estudiantes de Cañete.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- 1947 -->
+        <!-- ========================= -->
+
+        <div class="event">
+
+            <div class="event-images">
+
+                <img src="imagenes/1947-1.jpg"
+                     alt="Historia de Fernando Valle Riestra Carbo">
+
+            </div>
+
+            <div class="event-dot"></div>
+
+            <div class="event-content">
+
+                <span class="year">1947</span>
+
+                <h2>Fernando Valle Riestra Carbo</h2>
+
+                <div class="event-summary">
+
+                    Fernando Valle Riestra Carbo asumió la dirección
+                    del colegio y participó en el proceso que llevó
+                    a su nacionalización.
+
+                    <button class="more-btn"
+                            onclick="mostrarMas(this)">
+                        Ver más
+                    </button>
+
+                    <div class="more-content">
+
+                        <p>
+                            En <strong>1947</strong> asumió la dirección
+                            el abogado <strong>Fernando Valle Riestra
+                            Carbo</strong>, quien llevaba varios años
+                            establecido en Cañete.
+                        </p>
+
+                        <p>
+                            La reseña histórica institucional le atribuye
+                            un papel importante en las gestiones que
+                            posteriormente condujeron a la
+                            nacionalización del colegio.
+                        </p>
+
+                        <p>
+                            Esta etapa representa un periodo de
+                            transformación en la historia de la
+                            institución y antecede a su incorporación
+                            definitiva al sistema público.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- 1961 -->
+        <!-- ========================= -->
+
+        <div class="event">
+
+            <div class="event-images">
+
+                <img src="imagenes/1961-1.jpg"
+                     alt="Historia del colegio Sepúlveda en 1961">
+
+            </div>
+
+            <div class="event-dot"></div>
+
+            <div class="event-content">
+
+                <span class="year">1961</span>
+
+                <h2>Nuevas iniciativas educativas</h2>
+
+                <div class="event-summary">
+
+                    Se creó una sección vespertina cooperativa
+                    mixta como parte de la evolución educativa
+                    de la institución.
+
+                    <button class="more-btn"
+                            onclick="mostrarMas(this)">
+                        Ver más
+                    </button>
+
+                    <div class="more-content">
+
+                        <p>
+                            El <strong>25 de marzo de 1961</strong>,
+                            con la intervención de la Asociación de
+                            Empleados de Cañete y un grupo de profesores,
+                            se creó una <strong>Sección Vespertina
+                            Cooperativa Mixta</strong>.
+                        </p>
+
+                        <p>
+                            Este acontecimiento ocurrió apenas un año
+                            antes de la nacionalización del colegio y
+                            forma parte del proceso de expansión de sus
+                            servicios educativos.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- 1962 -->
+        <!-- ========================= -->
+
+        <div class="event">
+
+            <div class="event-images">
+
+                <img src="imagenes/1962-1.jpg"
+                     alt="Nacionalización del colegio Sepúlveda">
+
+                <img src="imagenes/1962-2.jpg"
+                     alt="Historia del colegio Sepúlveda">
+
+            </div>
+
+            <div class="event-dot"></div>
+
+            <div class="event-content">
+
+                <span class="year">1962</span>
+
+                <h2>La nacionalización del colegio</h2>
+
+                <div class="event-summary">
+
+                    El colegio dejó de ser una institución particular
+                    y pasó al sistema público.
+
+                    <button class="more-btn"
+                            onclick="mostrarMas(this)">
+                        Ver más
+                    </button>
+
+                    <div class="more-content">
+
+                        <p>
+                            El <strong>25 de marzo de 1962</strong>,
+                            mediante la <strong>Ley N.º 11796</strong>,
+                            el colegio fue nacionalizado.
+                        </p>
+
+                        <p>
+                            Este acontecimiento constituye uno de los
+                            momentos más importantes de su historia,
+                            porque significó el paso de una institución
+                            que había comenzado como particular hacia
+                            el sistema educativo público.
+                        </p>
+
+                        <p>
+                            De esta manera, el colegio pasó a tener una
+                            nueva condición institucional y continuó
+                            desarrollando su labor educativa al servicio
+                            de los estudiantes de Cañete.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- 1964 -->
+        <!-- ========================= -->
+
+        <div class="event">
+
+            <div class="event-images">
+
+                <img src="imagenes/1964-1.jpg"
+                     alt="Gran Unidad Escolar Sepúlveda">
+
+                <img src="imagenes/1964-2.jpg"
+                     alt="Historia de la Gran Unidad Escolar">
+
+            </div>
+
+            <div class="event-dot"></div>
+
+            <div class="event-content">
+
+                <span class="year">1964</span>
+
+                <h2>Gran Unidad Escolar</h2>
+
+                <div class="event-summary">
+
+                    El Colegio Nacional Sepúlveda pasó a convertirse
+                    en Gran Unidad Escolar.
+
+                    <button class="more-btn"
+                            onclick="mostrarMas(this)">
+                        Ver más
+                    </button>
+
+                    <div class="more-content">
+
+                        <p>
+                            El <strong>18 de marzo de 1964</strong>,
+                            mediante la <strong>Ley N.º 14974</strong>,
+                            el Colegio Nacional Sepúlveda pasó a
+                            convertirse en <strong>Gran Unidad Escolar
+                            (GUE)</strong>.
+                        </p>
+
+                        <p>
+                            La nueva organización integró al
+                            <strong>Instituto Industrial N.º 54</strong>
+                            y a la <strong>Escuela Primaria de Varones
+                            N.º 5411</strong>.
+                        </p>
+
+                        <p>
+                            Esta etapa ayuda a comprender la posterior
+                            importancia de la formación técnica dentro
+                            de la identidad institucional del colegio.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- HOY -->
+        <!-- ========================= -->
+
+        <div class="event">
+
+            <div class="event-images">
+
+                <img src="imagenes/actualidad-1.jpg"
+                     alt="Colegio José Buenaventura Sepúlveda actualmente">
+
+                <img src="imagenes/actualidad-2.jpg"
+                     alt="Estudiantes sepulvedanos">
+
+            </div>
+
+            <div class="event-dot"></div>
+
+            <div class="event-content">
+
+                <span class="year">Hoy</span>
+
+                <h2>La memoria continúa</h2>
+
+                <div class="event-summary">
+
+                    La historia del Sepúlveda continúa formando parte
+                    de la identidad de nuevas generaciones.
+
+                    <button class="more-btn"
+                            onclick="mostrarMas(this)">
+                        Ver más
+                    </button>
+
+                    <div class="more-content">
+
+                        <p>
+                            Desde sus inicios como colegio particular
+                            en 1937, la institución ha atravesado
+                            diferentes etapas y transformaciones.
+                        </p>
+
+                        <p>
+                            Su historia está vinculada a la educación
+                            de varias generaciones de estudiantes de
+                            Cañete y al desarrollo de una identidad
+                            institucional que ha evolucionado con el
+                            paso del tiempo.
+                        </p>
+
+                        <p>
+                            La memoria de quienes estudiaron, enseñaron
+                            y trabajaron en el colegio forma parte del
+                            patrimonio histórico de la comunidad
+                            educativa.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="final-message">
+
+        <h2>Una historia que continúa</h2>
+
+        <p>
+            Desde 1937, generaciones de estudiantes han pasado
+            por sus aulas. Conocer esta historia permite comprender
+            cómo se construyó la identidad del colegio y cómo
+            continúa transformándose con las nuevas generaciones.
+        </p>
+
+    </div>
+
+</main>
+<script>
+
+function mostrarMas(boton) {
+
+    const contenido = boton.nextElementSibling;
+
+    contenido.classList.toggle("show");
+
+    if (contenido.classList.contains("show")) {
+
+        boton.textContent = "Ver menos ↑";
+
+    } else {
+
+        boton.textContent = "Ver más";
+
+    }
+
+}
+
+</script>
+</body>
+</html>

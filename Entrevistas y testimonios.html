@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrevistas y Testimonios | Museo Digital</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Georgia, 'Times New Roman', serif;
+            background: #071b33;
+            color: white;
+            min-height: 100vh;
+        }
+
+        /* ENCABEZADO */
+        header {
+            background: linear-gradient(135deg, #061426, #0d2d50);
+            padding: 35px 20px;
+            text-align: center;
+            border-bottom: 3px solid #d4af37;
+        }
+
+        header h1 {
+            color: #d4af37;
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: #e8e8e8;
+            font-size: 18px;
+        }
+
+        /* CONTENEDOR */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 40px auto;
+        }
+
+        /* FILTROS */
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 35px;
+        }
+
+        .filter-btn {
+            background: transparent;
+            color: white;
+            border: 1px solid #d4af37;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #d4af37;
+            color: #071b33;
+        }
+
+        /* TARJETAS */
+        .interviews {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: #ffffff;
+            color: #222;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 12px 30px rgba(212, 175, 55, 0.25);
+        }
+
+        /* FOTO */
+        .photo {
+            width: 100%;
+            height: 250px;
+            background: #dfe5eb;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* INFORMACIÓN */
+        .card-content {
+            padding: 25px;
+        }
+
+        .category {
+            display: inline-block;
+            background: #0d2d50;
+            color: #d4af37;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 13px;
+            margin-bottom: 12px;
+        }
+
+        .card h2 {
+            color: #0d2d50;
+            margin-bottom: 5px;
+            font-size: 24px;
+        }
+
+        .role {
+            color: #777;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        .presentation {
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        /* PREGUNTAS */
+        .question {
+            color: #0d2d50;
+            font-weight: bold;
+            margin-top: 15px;
+            margin-bottom: 5px;
+        }
+
+        .answer {
+            line-height: 1.6;
+            color: #444;
+        }
+
+        /* DECORACIÓN */
+        .gold-line {
+            width: 80px;
+            height: 3px;
+            background: #d4af37;
+            margin: 15px auto 35px;
+        }
+
+        /* VOLVER */
+        .back-container {
+            text-align: center;
+            margin: 50px 0;
+        }
+
+        .back-btn {
+            display: inline-block;
+            text-decoration: none;
+            background: #d4af37;
+            color: #071b33;
+            padding: 13px 25px;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            background: white;
+            color: #071b33;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 30px;
+            }
+
+            header p {
+                font-size: 16px;
+            }
+
+            .container {
+                width: 94%;
+            }
+
+            .interviews {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ENCABEZADO -->
+    <header>
+        <h1>Entrevistas y Testimonios</h1>
+        <p>Historias y recuerdos de nuestra comunidad educativa</p>
+    </header>
+
+    <main class="container">
+
+        <!-- FILTROS -->
+        <div class="filters">
+            <button class="filter-btn active" onclick="filterCards('all', this)">
+                Todos
+            </button>
+
+            <button class="filter-btn" onclick="filterCards('exalumno', this)">
+                Exalumnos
+            </button>
+
+            <button class="filter-btn" onclick="filterCards('docente', this)">
+                Docentes
+            </button>
+
+            <button class="filter-btn" onclick="filterCards('vinculado', this)">
+                Personas vinculadas
+            </button>
+        </div>
+
+        <div class="gold-line"></div>
+
+        <!-- ENTREVISTAS -->
+        <section class="interviews">
+
+            <!-- ENTREVISTA 1 -->
+            <article class="card" data-category="exalumno">
+
+                <div class="photo">
+                    <img src="imagenes/entrevista 1.jpg" alt="Fotografía del exalumno">
+                </div>
+
+                <div class="card-content">
+
+                    <span class="category">Exalumno</span>
+
+                    <h2>Carlos Alberto Ramírez</h2>
+
+                    <p class="role">
+                        Exalumno de la institución educativa
+                    </p>
+
+                    <p class="presentation">
+                        Carlos fue estudiante del colegio José Buenaventura
+                        Sepúlveda. En esta entrevista comparte algunos recuerdos
+                        de su etapa escolar, sus experiencias y la importancia
+                        que tuvo la institución en su formación.
+                    </p>
+
+                    <p class="question">
+                        ¿Qué recuerdo tienes de tu etapa escolar?
+                    </p>
+
+                    <p class="answer">
+                        Recuerdo con mucho cariño los momentos que compartí
+                        con mis compañeros y profesores. Fueron experiencias
+                        que quedaron como parte importante de mi vida.
+                    </p>
+
+                    <p class="question">
+                        ¿Qué significó el colegio para ti?
+                    </p>
+
+                    <p class="answer">
+                        Fue un lugar donde no solo aprendí conocimientos,
+                        sino también valores como el respeto, la responsabilidad
+                        y la convivencia.
+                    </p>
+
+                    <p class="question">
+                        ¿Qué mensaje darías a los estudiantes actuales?
+                    </p>
+
+                    <p class="answer">
+                        Que aprovechen cada etapa de su vida escolar y valoren
+                        las experiencias que comparten con sus compañeros y docentes.
+                    </p>
+
+                </div>
+            </article>
+
+
+            <!-- ENTREVISTA 2 -->
+            <article class="card" data-category="docente">
+
+                <div class="photo">
+                    <img src="imagenes/entrevista 4.jpg.png" alt="Fotografía del docente">
+                </div>
+
+                <div class="card-content">
+
+                    <span class="category">Docente</span>
+
+                    <h2>Miguel Ángel Rojas</h2>
+
+                    <p class="role">
+                        Docente de la institución educativa
+                    </p>
+
+                    <p class="presentation">
+                        Juan Carlos es docente y ha formado parte de la comunidad
+                        educativa. En esta entrevista reflexiona sobre la labor
+                        docente, los estudiantes y los recuerdos construidos
+                        dentro de la institución.
+                    </p>
+
+                    <p class="question">
+                        ¿Qué significa ser docente en esta institución?
+                    </p>
+
+                    <p class="answer">
+                        Significa acompañar a los estudiantes durante una etapa
+                        importante de su formación y contribuir no solo a sus
+                        aprendizajes, sino también a su desarrollo personal.
+                    </p>
+
+                    <p class="question">
+                        ¿Qué es lo que más recuerda de sus estudiantes?
+                    </p>
+
+                    <p class="answer">
+                        Recuerdo especialmente su entusiasmo, sus preguntas,
+                        sus ocurrencias y los diferentes momentos que vivimos
+                        durante las actividades escolares.
+                    </p>
+
+                    <p class="question">
+                        ¿Qué mensaje dejaría para las nuevas generaciones?
+                    </p>
+
+                    <p class="answer">
+                        Que continúen aprendiendo, respetando a los demás y
+                        aprovechando las oportunidades que les brinda su
+                        institución educativa.
+                    </p>
+
+                </div>
+            </article>
+
+
+            <!-- ENTREVISTA 3 -->
+            <article class="card" data-category="vinculado">
+
+                <div class="photo">
+                    <img src="imagenes/Entrevista 3.png" alt="Persona vinculada al colegio">
+                </div>
+
+                <div class="card-content">
+
+                    <span class="category">Persona vinculada</span>
+
+                    <h2>Giovana Calderon García</h2>
+
+                    <p class="role">
+                        Persona vinculada a la institución
+                    </p>
+
+                    <p class="presentation">
+                        Giovana Calderon ha tenido una relación cercana con la comunidad educativa
+                        del colegio preocupandonse por el bienestar de los estudiantes.En esta entrevista
+                        comparte su perspectiva sobre la importancia de la institución para los estudiantes
+                        y para la comunidad
+                    </p>
+
+                    <p class="question">
+                        ¿Cómo describiría la importancia del colegio?
+                    </p>
+
+                    <p class="answer">
+                        Es una institución que forma parte de la historia de
+                        muchas familias y que ha contribuido a la educación de
+                        diferentes generaciones.
+                    </p>
+
+                    <p class="question">
+                        ¿Qué recuerdos conserva de la institución?
+                    </p>
+
+                    <p class="answer">
+                        Recuerdo las actividades escolares, la participación
+                        de los estudiantes y los diferentes acontecimientos
+                        que han reunido a la comunidad.
+                    </p>
+
+                    <p class="question">
+                        ¿Qué espera para el futuro del colegio?
+                    </p>
+
+                    <p class="answer">
+                        Espero que continúe creciendo y que las nuevas generaciones
+                        sigan valorando su historia, sus tradiciones y su identidad.
+                    </p>
+
+                </div>
+            </article>
+            <!-- ENTREVISTA 4 -->
+            <article class="card" data-category="exalumno">
+
+                <div class="photo">
+                    <img src="imagenes/entrevista 5.jpg"
+                         alt="Fotografía del exalumno">
+                </div>
+
+                <div class="card-content">
+
+                    <span class="category">Exalumno</span>
+
+                    <h2>SUYO LERMO ALAN REYNALDO</h2>
+
+                    <p class="role">
+                        Exalumno de la institución educativa
+                    </p>
+
+                    <p class="presentation">
+                        Fue estudiante de la institución educativa
+                        José Buenaventura Sepúlveda. En esta entrevista
+                        comparte sus recuerdos y experiencias durante
+                        su etapa escolar.
+                    </p>
+
+                    <p class="question">
+                        ¿Qué recuerdo tienes de tu etapa escolar?
+                    </p>
+
+                    <p class="answer">
+                        Uno de los recuerdos que más tengo presente son los momentos que compartía con mis compañeros. No todo era estudiar; también aprendimos a trabajar en equipo, participar en actividades y apoyarnos cuando alguien tenía dificultades.
+                    </p>
+
+                    <p class="question">
+                        ¿Qué significó el colegio para ti?
+                    </p>
+
+                    <p class="answer">
+                        Para mí fue una etapa muy importante porque ahí aprendí muchas cosas que todavía utilizo. Además de los conocimientos, me ayudó a ser más responsable y a relacionarme con diferentes personas.
+                    </p>
+
+                    <p class="question">
+                        ¿Qué mensaje darías a los estudiantes actuales?
+                    </p>
+
+                    <p class="answer">
+                        Que aprovechen su etapa escolar, porque aunque en algunos momentos parezca que las clases son difíciles o aburridas, después uno se da cuenta de que muchos de esos momentos se convierten en buenos recuerdos.
+                    </p>
+
+                </div>
+
+            </article>
+                        <!-- ENTREVISTA 5 -->
+            <article class="card" data-category="docente">
+
+                <div class="photo">
+                    <img src="imagenes/entrevista 6.jpg"
+                         alt="Fotografía del docente">
+                </div>
+
+                <div class="card-content">
+
+                    <span class="category">Docente</span>
+
+                    <h2>SÁNCHEZ REYES PEDRO R.</h2>
+
+                    <p class="role">
+                        Docente de la institución educativa
+                    </p>
+
+                    <p class="presentation">
+                        Docente vinculado a la comunidad educativa.
+                        En esta entrevista comparte sus experiencias,
+                        recuerdos y reflexiones sobre la institución.
+                    </p>
+
+                    <p class="question">
+                        ¿Qué significa ser docente en esta institución?
+                    </p>
+
+                    <p class="answer">
+                        Ser docente aquí significa tener la oportunidad de acompañar a los estudiantes durante una etapa importante de sus vidas. Cada promoción deja recuerdos diferentes y también nos enseña algo a nosotros como profesores.
+                    </p>
+
+                    <p class="question">
+                        ¿Qué recuerdo conserva de sus estudiantes?
+                    </p>
+
+                    <p class="answer">
+                       Recuerdo especialmente a los grupos que, aunque al principio tenían dificultades para organizarse, terminaron aprendiendo a trabajar juntos. Es satisfactorio ver cómo los estudiantes van adquiriendo más seguridad.
+
+                    <p class="question">
+                        ¿Qué mensaje dejaría para las nuevas generaciones?
+                    </p>
+
+                    <p class="answer">
+                       Les diría que aprovechen las oportunidades que tienen. El conocimiento no solamente está en los libros; también está en las experiencias, en los proyectos y en las personas que conocemos durante nuestra formación.
+                    </p>
+
+                </div>
+
+            </article>
+                        <!-- ENTREVISTA 6 -->
+            <article class="card" data-category="vinculado">
+
+                <div class="photo">
+                    <img src="imagenes/entrevista 7.jpg"
+                         alt="Persona vinculada al colegio">
+                </div>
+
+                <div class="card-content">
+
+                    <span class="category">Persona vinculada</span>
+
+                    <h2>LUYO MENDIETA VÍCTOR L.</h2>
+
+                    <p class="role">
+                        Persona vinculada a la institución
+                    </p>
+
+                    <p class="presentation">
+                        Persona relacionada con la comunidad educativa
+                        que comparte su perspectiva y recuerdos sobre
+                        la institución y su importancia para Cañete.
+                    </p>
+
+                    <p class="question">
+                        ¿Cómo describiría la importancia del colegio?
+                    </p>
+
+                    <p class="answer">
+                        Considero que el colegio forma parte de la memoria de muchas familias de Cañete. Durante tantos años han pasado diferentes generaciones por sus aulas, por eso su historia también forma parte de la historia de la comunidad.
+                    </p>
+
+                    <p class="question">
+                        ¿Qué recuerdos conserva de la institución?
+                    </p>
+
+                    <p class="answer">
+                        Recuerdo la participación de los estudiantes en las actividades institucionales. Siempre ha sido interesante observar cómo cada generación busca aportar algo diferente.
+                    </p>
+
+                    <p class="question">
+                        ¿Qué espera para el futuro del colegio?
+                    </p>
+
+                    <p class="answer">
+                        Espero que siga formando estudiantes comprometidos con su comunidad y que también utilicen las nuevas tecnologías para conservar y compartir su historia.
+                    </p>
+
+                </div>
+
+            </article>
+        </section>
+
+        <!-- VOLVER AL MUSEO -->
+        <div class="back-container">
+            <a href="index.html" class="back-btn">
+                ← Volver al Museo Digital
+            </a>
+        </div>
+
+    </main>
+
+
+    <!-- FILTROS -->
+    <script>
+        function filterCards(category, button) {
+
+            const cards = document.querySelectorAll(".card");
+            const buttons = document.querySelectorAll(".filter-btn");
+
+            buttons.forEach(btn => {
+                btn.classList.remove("active");
+            });
+
+            button.classList.add("active");
+
+            cards.forEach(card => {
+
+                if (category === "all") {
+                    card.style.display = "block";
+                } 
+                else if (card.dataset.category === category) {
+                    card.style.display = "block";
+                } 
+                else {
+                    card.style.display = "none";
+                }
+
+            });
+        }
+    </script>
+
+</body>
+</html>
