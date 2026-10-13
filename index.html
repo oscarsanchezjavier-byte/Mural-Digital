@@ -44,6 +44,7 @@ body{margin:0;background:#f4f5f5;color:#082b50;font-family:Georgia,'Times New Ro
 .interviews{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
 .person{border:1px solid #d4dce1;border-radius:8px;background:white;padding:9px}
 .person .photo{height:105px;background:#e7edf1;border-radius:6px;display:flex;align-items:center;justify-content:center;color:#718596;font:12px Arial,sans-serif;text-align:center}
+.person .photo img{width:100%; height:100%; object-fit:contain; display:block; border-radius:6px;}
 .person h4{font-size:15px;margin:8px 0 4px}
 .person p{font:12px/1.35 Arial,sans-serif;font-style:italic;color:#455f73;margin:0}
 .sources ul{padding-left:20px;margin:7px 0;font:13px/1.55 Arial,sans-serif;color:#23455f}
@@ -126,18 +127,77 @@ footer p{font:12px Arial,sans-serif;margin:4px 0}
   </section>
  </div>
 
- <div class="bottomgrid">
-  <section class="card" id="entrevistas">
-   <h3><span class="icon">♙</span> Entrevistas y testimonios</h3>
-   <div class="interviews">
-    <article class="person"><div class="photo">📷<br>Fotografía del entrevistado</div><h4>Exalumno/a</h4><p>“Coloca aquí un testimonio real obtenido en la entrevista.”</p></article>
-    <article class="person"><div class="photo">📷<br>Fotografía del entrevistado</div><h4>Docente</h4><p>“Coloca aquí un testimonio real de la comunidad educativa.”</p></article>
-    <article class="person"><div class="photo">📷<br>Fotografía del entrevistado</div><h4>Exalumno/a</h4><p>“Agrega otro recuerdo importante de la institución.”</p></article>
-   <a class="more" href="Entrevistas%20y%20testimonios.html">
-    Ver entrevistas y testimonios&nbsp; →
-   </a>  
-  </div>
-  </section>
+<div class="bottomgrid">
+
+    <section class="card" id="entrevistas">
+
+        <h3>
+            <span class="icon">♙</span>
+            Entrevistas y testimonios
+        </h3>
+
+        <div class="interviews">
+
+            <!-- PRIMERA PERSONA -->
+            <article class="person">
+
+                <div class="photo">
+                    <img src="imagenes/entrevista 1.jpg"
+                         alt="Fotografía del exalumno">
+                </div>
+
+                <h4>Exalumno/a</h4>
+
+                <p>
+                    “Coloca aquí un testimonio real obtenido en la entrevista.”
+                </p>
+
+            </article>
+
+
+            <!-- SEGUNDA PERSONA -->
+            <article class="person">
+
+                <div class="photo">
+                    <img src="imagenes/entrevista 4.jpg"
+                         alt="Fotografía del docente">
+                </div>
+
+                <h4>Docente</h4>
+
+                <p>
+                    “Coloca aquí un testimonio real de la comunidad educativa.”
+                </p>
+
+            </article>
+
+
+            <!-- TERCERA PERSONA -->
+            <article class="person">
+
+                <div class="photo">
+                    <img src="imagenes/entrevista 5.jpg"
+                         alt="Fotografía del exalumno">
+                </div>
+
+                <h4>Exalumno/a</h4>
+
+                <p>
+                    “Agrega otro recuerdo importante de la institución.”
+                </p>
+
+            </article>
+
+        </div>
+
+
+        <a class="more" href="Entrevistas%20y%20testimonios.html">
+            Ver entrevistas y testimonios&nbsp; →
+        </a>
+
+    </section>
+
+</div>
 
   <section class="card">
    <h3><span class="icon">▧</span> Galería interactiva</h3>
